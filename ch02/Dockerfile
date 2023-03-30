@@ -5,7 +5,6 @@ WORKDIR /opt/gdsc
 COPY ./frontend .
 
 RUN npm install
-
 RUN npm run build
 
 CMD []
