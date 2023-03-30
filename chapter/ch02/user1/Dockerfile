@@ -1,0 +1,10 @@
+FROM node:18
+
+WORKDIR /opt/gdsc
+
+COPY ./frontend .
+
+RUN npm install
+RUN npm run build
+
+CMD []
