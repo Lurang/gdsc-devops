@@ -24,4 +24,9 @@
 ## 과제
 
 - 3주차 내용이 조금많아서 예습 ( cache, multi stage build )
-- 예습한 내용을 가지고 xxxx 버전 Dockerfile 직접 제작 해보기
+- 예습한 내용을 가지고 nginx 버전 Dockerfile 직접 제작 해보기
+
+ch02 폴더안에서 Dockerfile을 제작후 \
+본인의 git id에 맞는 폴더를 생성한후 완성된 파일을 이동 \
+
+ch02/{githubId} 브랜치 생성후 PR
