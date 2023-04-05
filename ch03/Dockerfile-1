@@ -1,0 +1,20 @@
+FROM node:18-alpine as base
+
+FROM base as builder
+WORKDIR /opt/gdsc
+COPY ./frontend/package.json ./frontend/package-lock.json ./
+RUN npm ci
+COPY ./frontend/public ./public
+COPY ./frontend/tsconfig.json .
+COPY ./frontend/src ./src
+RUN npm run build
+
+FROM base
+RUN apk add --no-cache tini
+WORKDIR /opt/gdsc
+COPY --from=builder /opt/gdsc/node_modules ./node_modules
+COPY --from=builder /opt/gdsc/build ./build
+COPY ./frontend/server ./server
+
+ENTRYPOINT ["/sbin/tini", "--"]
+CMD ["node", "./server/index.js"]
