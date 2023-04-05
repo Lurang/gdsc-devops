@@ -7,4 +7,4 @@ COPY ./frontend .
 RUN npm install
 RUN npm run build
 
-CMD []
+CMD ["node", "./server/index.js"]
