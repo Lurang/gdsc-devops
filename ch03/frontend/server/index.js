@@ -9,13 +9,17 @@ app.use(express.static(path.join(__dirname, '../build')));
 app.get('/', (_, res) => {
     res.send(path.join(__dirname, '../build/index.html'));
 });
-app.listen(PORT, () => {
+
+const server = app.listen(PORT, () => {
     console.log(`[Info] Server is listening on port ${PORT}`);
 });
 
-process.on('SIGTERM', () => {
-    debug('SIGTERM signal received: closing HTTP server');
+const gracefulShutdownHandler = (signal) => {
+    console.log(signal + ' signal received: closing HTTP server');
     server.close(() => {
-        debug('HTTP server closed');
+        console.log('HTTP server closed');
     });
-});
+};
+
+process.on('SIGTERM', gracefulShutdownHandler);
+process.on('SIGINT', gracefulShutdownHandler);
