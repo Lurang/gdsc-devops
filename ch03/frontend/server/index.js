@@ -14,6 +14,9 @@ const server = app.listen(PORT, () => {
     console.log(`[Info] Server is listening on port ${PORT}`);
 });
 
+/**
+ * @param {NodeJS.SignalsListener} signal
+ */
 const gracefulShutdownHandler = (signal) => {
     console.log(signal + ' signal received: closing HTTP server');
     server.close(() => {
