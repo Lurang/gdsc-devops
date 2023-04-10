@@ -2,6 +2,11 @@
 
 ## 내용
 
+- 과제 + a
+    - webserver에 대해 설명
+    - express로 만든 웹서버 설명
+    - graceful shutdown 예시 설명
+
 - Dockerfile 제작방법
     - FROM
     - RUN
@@ -12,14 +17,14 @@
     - 포함하는 파일, .dockerignore
 
 - Frontend Dockerfile 제작
-    - webserver에 대해 설명
-    - express로 만든 웹서버 설명
-    - ch02/Dockerfile 참고하여 제작
+    - FROM, COPY, RUN으로 간단하게 구성ㄴ
     - 실행
+    - port -p 옵션
+    - signal handling 작동여부 검사 - 3주차에 원인설명 지금은 추측해보기
 
 - nginx webserver에 대해 설명
     - reverse proxy에 대한 설명
-    - nginx.conf파일 만들어서 volume 해보기
+    - nginx.conf파일 만들어보기
 
 ## 과제
 
