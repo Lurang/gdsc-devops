@@ -18,7 +18,7 @@ const delayResponseAPI = async (_, res) => {
     return res.send('OK');
 };
 
-app.get('/', renderIndex);
+app.get('/*', renderIndex);
 app.get('/api', delayResponseAPI);
 
 const server = app.listen(PORT, () => {
