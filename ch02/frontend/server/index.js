@@ -6,9 +6,20 @@ const PORT = 4000;
 
 app.use(express.static(path.join(__dirname, '../build')));
 
-app.get('/', (_, res) => {
-    res.send(path.join(__dirname, '../build/index.html'));
-});
+const sleep = (ms) => {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+};
+
+const renderIndex = (_, res) => res.send(path.join(__dirname, '../build/index.html'));
+const delayResponseAPI = async (_, res) => {
+    await sleep(5 * 1000);
+    return res.send('OK');
+};
+
+app.get('/', renderIndex);
+app.get('/api', delayResponseAPI);
 
 const server = app.listen(PORT, () => {
     console.log(`[Info] Server is listening on port ${PORT}`);
@@ -18,7 +29,7 @@ const server = app.listen(PORT, () => {
  * @param {NodeJS.SignalsListener} signal
  */
 const gracefulShutdownHandler = (signal) => {
-    console.log(signal + ' signal received: closing HTTP server');
+    console.log(`[${new Date().toISOString()}] ${signal} signal received: closing HTTP server`);
     server.close(() => {
         console.log('HTTP server closed');
     });
