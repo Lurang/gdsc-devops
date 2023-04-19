@@ -1,3 +1,10 @@
+# Info
+
+Deprecated
+
+follow [this repo](https://github.com/Google-Developer-Student-Clubs-TUK/DevOps-Study)
+
+
 # GDSC 2023-1 DevOps Study
 
 ## study 내용
